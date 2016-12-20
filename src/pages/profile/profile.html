@@ -1,0 +1,109 @@
+<!--
+  Generated template for the Profile page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="main-header">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Perfil</ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="cleanLocalStorage($event)">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <header>
+    <img class="avatar" src="../../assets/img/farmer-profile.png">
+  </header>
+
+  <ion-card>
+    <ion-card-header>
+      <strong>You as User</strong>
+    </ion-card-header>
+    <ion-card-content>
+      <p><small>Proprietário da Fazenda Farmland MG</small></p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <h6>Relatório</h6>
+    </ion-card-header>
+    <ion-card-content>
+      <small *ngIf="hasEmptyField">Preencha todos os dados no formulário para visualizar seu relatório :)</small>
+      <ion-grid *ngIf="!hasEmptyField">
+        <div class="block">
+          <h3>Perfil</h3>
+          <ion-row>
+            <ion-col><small [(ngModel)]="isPropertyOwner" ngDefaultControl><strong>Perfil:</strong> {{isPropertyOwner}}</small></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col width-30><small [(ngModel)]="familyMembers" ngDefaultControl><strong>Numero de dependentes:</strong>  {{familyMembers}}</small></ion-col>
+          </ion-row>  
+        </div>
+        <div class="block">
+          <h3>Gerenciamento da propriedade</h3>
+          <ion-row>
+            <ion-col><small><strong>Tem documentos que provam ser dono da propriedade?</strong></small></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><small [(ngModel)]="ownsProperty" ngDefaultControl> {{ownsProperty}}</small></ion-col>
+          </ion-row>
+        </div>
+        <div class="block">
+          <h3>Produção</h3>
+          <ion-row>
+            <ion-col><small><strong>Tem documentos que provam ser dono da propriedade?</strong></small></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><small [(ngModel)]="pragueIdentify" ngDefaultControl> {{pragueIdentify}}</small></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><small><strong>Usa pesticidas e herbicidas?</strong></small></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><small [(ngModel)]="pesticidesUsage" ngDefaultControl> {{pesticidesUsage}}</small></ion-col>
+          </ion-row>
+        </div>
+
+        <h3 class="level" [(ngModel)]="propertyLevel" ngDefaultControl>Nível {{propertyLevel}}</h3>
+        
+        <p><small *ngIf="propertyLevel == 1">Recomendações para você que é do nivel 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small></p>
+        <p><small *ngIf="propertyLevel == 2">Recomendações para você que é do nivel 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </small></p>
+        <p><small *ngIf="propertyLevel == 3">Recomendações para você que é do nivel 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </small></p>
+        <p><small *ngIf="propertyLevel == 4">Recomendações para você que é do nivel 4. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </small></p>
+        <ion-row>
+          <ion-col width-10>
+            <ion-icon class="positive" name="thumbs-up" item-left></ion-icon>
+          </ion-col>
+          <ion-col class="rating-desc">
+            <p><small *ngIf="propertyLevel == 1">Pontos positivos nivel 1.</small></p>
+            <p><small *ngIf="propertyLevel == 2">Pontos positivos nivel 2</small></p>
+            <p><small *ngIf="propertyLevel == 3">Pontos positivos nivel 3</small></p>
+            <p><small *ngIf="propertyLevel == 4">Pontos positivos nivel 4</small></p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col width-10>
+            <ion-icon class="negative" name="thumbs-down" item-left></ion-icon>
+          </ion-col>
+          <ion-col class="rating-desc">
+            <p><small *ngIf="propertyLevel == 1">Pontos negativos nivel 1.</small></p>
+            <p><small *ngIf="propertyLevel == 2">Pontos negativos nivel 2</small></p>
+            <p><small *ngIf="propertyLevel == 3">Pontos negativos nivel 3</small></p>
+            <p><small *ngIf="propertyLevel == 4">Pontos negativos nivel 4</small></p>
+          </ion-col>
+        </ion-row>   
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

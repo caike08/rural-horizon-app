@@ -1,0 +1,126 @@
+<ion-header class="main-header">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Questionário</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="card-bg">
+    <div class="card-content">
+      <ion-grid>
+        <ion-row>
+          <ion-col width-20 class="container-img">
+            <img src="../../assets/img/tractor.png" alt="">
+          </ion-col>
+          <ion-col width-80>
+            <p>Preencha todas as questões para obter o resultado de sua autoavaliação.</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+  <br>
+  <form [formGroup]="form" (ngSubmit)="onSubmit(this.form.value)" class="card-bg" novalidate>
+    <div class="card-content">
+      <h5>1. Perfil do Fazendeiro</h5>
+      <div class="question">
+        <p><strong>1.1</strong> Em que perfil você se qualifica?</p>
+        <ion-list radio-group formControlName="isPropertyOwner">
+          <ion-item>
+            <ion-label><small>Proprietário do terreno</small></ion-label>
+            <ion-radio value="owner"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label><small>O terreno é arrendado</small></ion-label>
+            <ion-radio value="lease"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label><small>Outro</small></ion-label>
+            <ion-radio value="other"></ion-radio>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div class="question">
+        <p><strong>1.2</strong> Quantas pessoas da sua família obtém rendimento dessa propriedade?</p>
+        <ion-item>
+          <ion-input type="number" formControlName="familyMembers"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!form.controls.familyMembers.valid && (form.controls.familyMembers.dirty || submitAttempt)">
+            <small>Informe um número positivo!</small>
+        </ion-item>
+      </div>
+      <br>
+      <h5>2. Gerenciamento da propriedade</h5>
+      <div class="question">
+        <p><strong>2.1</strong> Tenho documentos que comprovam que sou dono da propriedade.</p>
+        <ion-list radio-group formControlName="ownsProperty">
+          <ion-row>
+            <ion-item>
+                <ion-label><small>Sim</small></ion-label>
+                <ion-radio value="yes"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label><small>Não</small></ion-label>
+                <ion-radio value="no"></ion-radio>
+              </ion-item>
+          </ion-row>
+        </ion-list>
+      </div>
+      <br>
+      <h5>3. Produção</h5>
+      <div class="question">
+        <p><strong>3.1</strong> Sei como identificar ataque de pragas na minha plantação.</p>
+        <ion-list radio-group formControlName="pragueIdentify">
+          <ion-row>
+            <ion-item>
+                <ion-label><small>Sim</small></ion-label>
+                <ion-radio value="yes"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label><small>Não</small></ion-label>
+                <ion-radio value="no"></ion-radio>
+              </ion-item>
+          </ion-row>
+        </ion-list>
+      </div>
+      <div class="question">
+        <p><strong>3.2</strong> Uso pesticidas e herbicidas na minha plantação.</p>
+        <ion-list radio-group formControlName="pesticidesUsage">
+          <ion-row>
+            <ion-item>
+                <ion-label><small>Sim</small></ion-label>
+                <ion-radio value="yes"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label><small>Não</small></ion-label>
+                <ion-radio value="no"></ion-radio>
+              </ion-item>
+          </ion-row>
+        </ion-list>
+      </div>
+      <div class="question">
+        <p><strong>3.3</strong> Escolha um nível que melhor represente sua propriedade.</p>
+        <ion-item>
+          <ion-label>Nivel {{level}}</ion-label>
+          <ion-range min="1" max="4" step="1" snaps="true" formControlName="propertyLevel" [(ngModel)]="level">
+            <ion-icon range-left small name="star-outline"></ion-icon>
+            <ion-icon range-right name="star"></ion-icon>
+          </ion-range>
+        </ion-item>
+        <div class="question-container">
+          <p><small *ngIf="level == 1"> Não sei se há pestes ou doenças na minha plantação e não os controlo.</small></p>
+          <p><small *ngIf="level == 2">Controlo pestes e doenças por minha própria conta</small></p>
+          <p><small *ngIf="level == 3">Identifico surtos de doenças e insetos, e os controlo através de recomendações técnicas</small></p>
+          <p><small *ngIf="level == 4">Contabilizo surtos de pestes e então decido o melhor momento para controlá-los</small></p>
+        </div>
+      </div>
+      <br>
+      <button ion-button type="submit" block [disabled]="!this.form.valid || hasConnection()">Enviar</button>
+    </div>
+  </form>
+
+</ion-content>

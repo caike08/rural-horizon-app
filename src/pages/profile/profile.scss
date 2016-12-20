@@ -1,0 +1,46 @@
+page-profile {
+    header{
+        width: 100%;
+        height: 100px;
+        background: url('../../assets/img/background.jpg') no-repeat center center #f4c401;
+        background-size: cover;
+        position: relative;
+        margin-bottom: 5px;
+        .avatar {
+            position: absolute;
+            max-width: 80px;
+            left: 36%;
+            top: 37%;
+            border-radius: 50%;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        }
+    }
+    ion-card-header, ion-card-header h6, p small {
+        text-align: center;
+        display: block;
+    }
+    .block {
+        margin: 5px 0 15px 0;
+    }
+
+    .level {
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .positive {
+        color: #8BC34A;
+    }
+    .negative {
+        color: #f53d3d;
+    }
+    .rating-desc {
+        vertical-align: middle;
+        p {
+            margin: 5px 0;
+            small {
+                text-align: left;
+            }
+        }
+    }
+}

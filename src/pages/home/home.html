@@ -1,0 +1,41 @@
+<ion-header class="main-header">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Horizonte Rural</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-content class="card-home">
+      <ion-grid>
+        <ion-row>
+          <img class="icon" src="../../assets/img/home.png">
+        </ion-row>
+        <ion-row>
+          <small>Bem-vindo ao Solidaridad® Rural Horizon Expert System (RHES), uma plataforma para apoiar 
+            a organização do processo de melhoria contínua de sua(s) propriedade(s) 
+            em direção às melhores práticas de gestão e produção agrícola.
+          </small>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Questionário
+    </ion-card-header>
+    <ion-card-content>
+      <small>É necessário que você preencha todas as questões para obter o resultado de sua autoavaliação.</small>
+      <ion-grid>
+        <ion-row>
+          <button ion-button full (click)="formRoute($event)">Responder questões</button>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
